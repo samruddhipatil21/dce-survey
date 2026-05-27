@@ -20,9 +20,12 @@
   <p>Please wait while we set up your survey...</p>
 </div>
 <script>
+  // Capture Prolific PID from URL
+  const params = window.location.search;
   // Randomly assign to Block 1 or Block 2 with equal probability
   const block = Math.random() < 0.5 ? 'block1-final-v2.html' : 'block2-final.html';
-  window.location.replace(block);
+  // Pass all URL parameters (including PROLIFIC_PID) to the block file
+  window.location.replace(block + params);
 </script>
 </body>
 </html>

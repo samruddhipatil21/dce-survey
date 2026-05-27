@@ -327,10 +327,15 @@ function getLikert(id){
   return s?s.textContent.trim():'';
 }
 
+/* ─── Capture Prolific PID from URL ─── */
+const urlParams = new URLSearchParams(window.location.search);
+const prolificPID = urlParams.get('PROLIFIC_PID') || urlParams.get('prolific_pid') || 'not_captured';
+
 /* ─── Collect ALL survey data into one object ─── */
 function collectData(){
   const data={
     timestamp: new Date().toISOString(),
+    prolific_pid: prolificPID,
     block: 2,
     // Section A
     age: document.getElementById('q-age').value,
